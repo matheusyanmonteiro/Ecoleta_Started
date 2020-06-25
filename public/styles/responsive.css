@@ -23,6 +23,13 @@
     #page-search-results .card {
         grid-template-columns: 1fr;
     }
+
+    #page-create-point .field-group{
+        flex-direction: column;
+    }
+    #page-create-point .field-group .field + .field {
+        margin-left: 0;
+    }
 }
 
 @media(win-width: 1700px) {
