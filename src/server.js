@@ -78,6 +78,17 @@ server.get("/search", (req, res) => {
 
     }
 
+    else if (search == "todos"){
+        //pesquisa todos retorna todos
+        db.all(`SELECT * FROM places`, function(err, rows){
+            if(err) {
+                return console.log(err)
+            }
+            const total = rows.length
+        return res.render("search-results.html",{places: rows, total: total})
+        })
+    } else {
+
 
     //pegando os dados do banco de dados
 
@@ -92,6 +103,7 @@ server.get("/search", (req, res) => {
         //mostrar a pagina html com o banco de dados
         return res.render("search-results.html",{places: rows, total: total})
     })
+    }
 
 
 
