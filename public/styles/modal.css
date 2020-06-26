@@ -71,7 +71,7 @@
     
     font-size: 16px;
 
-    color: #6c6c80
+    color: #6c6c80;
 }
 
 #modal form button {
@@ -85,4 +85,11 @@
 
 #modal form button:hover {
     background-color: #2fb85e;
+}
+
+
+#modal.point .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
