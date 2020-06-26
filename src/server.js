@@ -70,16 +70,25 @@ server.post("/savepoint", (req, res) => {
 })
 
 server.get("/search", (req, res) => {
+
+    const search = req.query.search
+    if (search ==""){
+        //pesquisa vazia 
+        return res.render("search-results.html",{total: 0})
+
+    }
+
+
     //pegando os dados do banco de dados
 
-    db.all(`SELECT * FROM places`, function(err, rows){
+    db.all(`SELECT * FROM places WHERE city LIKE '%${search}%'`, function(err, rows){
         if(err) {
             return console.log(err)
         }
 
         const total =rows.length
 
-        console.log("dados resgastados com sucessoS")
+        console.log("dados resgastados com sucesso")
         //mostrar a pagina html com o banco de dados
         return res.render("search-results.html",{places: rows, total: total})
     })
